@@ -19,7 +19,21 @@ const connect = function () {
   conn.on("connect", () => {
     conn.write('Name: MAT');
   });
+ 
+  // setInterval(("data", () => {
+  //   conn.write("Move: left");
+  // }), 500);
+  // setInterval(("data", () => {
+  //   conn.write("Move: up");
+  // }), 600);
+  // setInterval(("data", () => {
+  //   conn.write("Move: down");
+  // }), 700);
   
+  // setInterval(("data", () => {
+  //   conn.write("Move: right");
+  // }), 800);
+
   // interpret incoming data as text
   conn.setEncoding("utf8");
   

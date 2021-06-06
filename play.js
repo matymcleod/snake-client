@@ -2,25 +2,24 @@ const net = require("net");
 const { myNumber, myString } = require("./client");
 const myObjects = require("./client")
 
-// establishes a connection with the game server
-// const connect = function () {
-//   const conn = net.createConnection({
-//     host: "localhost",
-//     port: 50541
-//   });
+// setup interface to handle user input from stdin
 
-//   conn.on("data", () => {
-//     console.log('Message from server: you dead, you suck!');
-//   });
+const setupInput = function () {
+  const stdin = process.stdin;
+  stdin.setRawMode(true);
+  stdin.setEncoding("utf8");
+  stdin.resume();
+  stdin.on("data", handleUserInput);
+  return stdin;
+};
 
-//   // interpret incoming data as text
-//   conn.setEncoding("utf8");
-  
-//   return conn;
-// };
+const handleUserInput = function () {
+  stdin.on('data', (key) => {
+    if (key === '\u0003') {
+      process.exit();
+    }
+  });
+};
+setupInput();
 
-// console.log("Connecting ...");
-// connect();
 
-console.log(myNumber);
-console.log(myString);
