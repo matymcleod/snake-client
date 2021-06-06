@@ -11,6 +11,15 @@ const connect = function () {
     console.log('Message from server: you dead, you suck!');
   });
 
+
+  conn.on("connect", () => {
+    console.log('You are now connected')
+  });
+
+  conn.on("connect", () => {
+    conn.write('Name: MAT');
+  });
+  
   // interpret incoming data as text
   conn.setEncoding("utf8");
   
